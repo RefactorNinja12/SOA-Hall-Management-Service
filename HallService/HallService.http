@@ -1,0 +1,6 @@
+@HallService_HostAddress = http://localhost:5187
+
+GET {{HallService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
