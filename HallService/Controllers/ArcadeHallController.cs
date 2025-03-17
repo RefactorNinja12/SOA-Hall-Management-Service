@@ -29,7 +29,10 @@ namespace HallService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetArcadeHall(int id)
         {
-
+            if(id <= 0)
+            {
+                return NoContent();
+            }
             var arcadeHall = await _context.Halls.FindAsync(id);
             if (arcadeHall == null)
             {
