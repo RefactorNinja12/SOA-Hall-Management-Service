@@ -26,7 +26,7 @@ namespace HallService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetHalls()
+        public async Task<ActionResult> GetAllArcadeHalls()
         {
             var halls = await _context.Halls.ToListAsync();
             if (halls == null)
