@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HallService.Migrations
 {
     [DbContext(typeof(HallManagementDbContext))]
-    [Migration("20250317101616_InitialCreate")]
+    [Migration("20250318105505_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,6 +26,10 @@ namespace HallService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
