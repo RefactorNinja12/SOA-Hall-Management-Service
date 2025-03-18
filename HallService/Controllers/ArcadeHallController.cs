@@ -16,6 +16,15 @@ namespace HallService.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<ArcadeHall>> CreateHalls([FromBody] ArcadeHall arcadehall)
+        {
+            _context.Halls.Add(arcadehall);
+            await _context.SaveChangesAsync();
+
+           return CreatedAtAction(nameof(GetArcadeHall), new {id=arcadehall.Id}, arcadehall);        
+        }
+
         [HttpGet]
         public async Task<ActionResult> GetHalls()
         {
