@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HallService.Migrations
 {
     [DbContext(typeof(HallManagementDbContext))]
-    [Migration("20250320114343_MigrateToSqlServer")]
-    partial class MigrateToSqlServer
+    [Migration("20250320134814_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

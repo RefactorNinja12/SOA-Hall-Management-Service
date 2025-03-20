@@ -91,7 +91,7 @@ namespace HallService.Controllers
             _context.Halls.Remove(arcadeHall);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok();
         }
     }
 
