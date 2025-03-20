@@ -8,9 +8,9 @@ namespace HallService
     {
         public DbSet<ArcadeHall> Halls { get; set; }
 
-        public HallManagementDbContext(DbContextOptions options) : base(options)
+        public HallManagementDbContext(DbContextOptions<HallManagementDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            
         }
     }
 }

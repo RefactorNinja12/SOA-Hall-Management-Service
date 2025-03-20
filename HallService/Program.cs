@@ -9,21 +9,30 @@ namespace HallService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            var scalarSettings = builder.Configuration.GetSection("ScalarAPI");
             // Add services to the container.
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddCors(options =>
+            {
+            options.AddPolicy("AllowAll",
+               builder => builder.AllowAnyOrigin()
+                                 .AllowAnyMethod()
+                                 .AllowAnyHeader());
+
+            });
+            
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddDbContext<HallManagementDbContext>(options =>
-            {
-
-                options.UseSqlite("Data Source=HallManagementDb.db");
-            });
+            options.UseSqlServer(connectionString));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
             {
                 app.MapOpenApi();
                 app.MapScalarApiReference();
