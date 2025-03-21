@@ -40,6 +40,7 @@ namespace HallService
 
             app.UseHttpsRedirection();
 
+            app.UseCors("AllowAll");
             app.UseAuthorization();
 
 
