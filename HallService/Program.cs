@@ -10,7 +10,7 @@ namespace HallService
         {
             var builder = WebApplication.CreateBuilder(args);
             var scalarSettings = builder.Configuration.GetSection("ScalarAPI");
-            // Add services to the container.
+            
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -25,13 +25,13 @@ namespace HallService
             
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+          
             builder.Services.AddOpenApi();
             builder.Services.AddDbContext<HallManagementDbContext>(options =>
             options.UseSqlServer(connectionString));
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+           
             if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
             {
                 app.MapOpenApi();
