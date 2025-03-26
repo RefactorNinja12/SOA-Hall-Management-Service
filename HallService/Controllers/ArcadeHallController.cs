@@ -40,7 +40,7 @@ namespace HallService.Controllers
         {
             if(id <= 0)
             {
-                return NoContent();
+                return BadRequest();
             }
             var arcadeHall = await _context.Halls.FindAsync(id);
             if (arcadeHall == null)
@@ -76,12 +76,16 @@ namespace HallService.Controllers
                 }
             }
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteArcadeHall(int id)
         {
+            if(id <= 0)
+            {
+                return BadRequest();
+            }
             var arcadeHall = await _context.Halls.FindAsync(id);
             if (arcadeHall == null)
             {
@@ -91,7 +95,7 @@ namespace HallService.Controllers
             _context.Halls.Remove(arcadeHall);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return NoContent();
         }
     }
 
