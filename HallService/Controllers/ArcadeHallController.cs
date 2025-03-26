@@ -76,7 +76,7 @@ namespace HallService.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
